@@ -79,8 +79,12 @@ $(() => {
             url: "../server/register.php",
             data: `username=${$("#umeInput").val()}&password=${$("#passwordInput").val()}`,
             dataType: "json",
-            success: function (response) {
-                console.log(response);
+            success: function (data) {
+                if (data.status == "success") {
+                    window.location.href = "https://www.jianke.com/";
+                } else {
+                    alert(data.data.msg)
+                }
             }
         });
     })

@@ -1,5 +1,4 @@
 <?php
-  <?php
   header("Content-type:text/html;charset=utf-8");
   # 插入一行数据到数据库中的SQL语句
   # INSERT INTO `user` (`id`, `username`, `password`, `phone`) VALUES ('1', 'zs', '123456', '18681538888');
@@ -18,7 +17,7 @@
   $password = $_REQUEST["password"];
   
   
-  $db = mysqli_connect("127.0.0.1","root","","jk");
+  $db = mysqli_connect("127.0.0.1","root","","siku");
   $sql1 = "SELECT * FROM user WHERE username='$username'";
   $result = mysqli_query($db,$sql1);
   
@@ -29,12 +28,11 @@
      $obj["data"]["msg"] = "注册失败，该用户名已经被使用！！！";
   }else
   {
-    $sql = "INSERT INTO `user` (`id`, `username`, `password`, `phone`) VALUES (null, '$username', '$password', '$phone')";//id 的主键要在创建的时候设置
+    $sql = "INSERT INTO `user` (`id`, `username`, `password`) VALUES (null, '$username', '$password')";//id 的主键要在创建的时候设置
     # 执行SQL语句
     mysqli_query($db, $sql);
     $obj["status"] = "success";
     $obj["data"]["msg"] = "恭喜您，注册成功！！！";
   }
   echo json_encode($obj,true);
-  ?>
 ?>
