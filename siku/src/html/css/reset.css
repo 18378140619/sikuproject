@@ -1,0 +1,97 @@
+@charset "utf-8";
+a{
+    text-decoration: none
+}
+
+img
+ {
+    display: block
+}
+html,body{
+    height: 100%;
+    /* background: rgb(214, 218, 224); */
+    /* background: yellow; */
+}
+.button,
+.flex,
+.tac,
+.text-center {
+    text-align: center
+}
+
+a,
+article,
+aside,
+body,
+button,
+dd,
+details,
+div,
+dl,
+dt,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+img,
+input,
+li,
+menu,
+nav,
+ol,
+p,
+section,
+select,
+table,
+tbody,
+td,
+textarea,
+th,
+tr,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    width: auto\9;
+    border: 0;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both
+}
+
+li,
+ol,
+ul {
+    list-style: none
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+@charset "utf-8";
+.btn-class{
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    height: 23px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+}
+.btn-class span{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    padding: 0 5px;
+    background: #ccc;
+    border: 1px solid #ccc
+}
+.btn-class .tab{
+    border: 1px solid yellow;
+    background: lightcoral;
+}
+.commodity-list {
+    background: #fff;
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 30px 20px 2px;
+}
+.commodity-list dl {
+    display: inline-block;
+    width: 240px;
+    height: 360px;
+    margin: 0 25px 56px 25px;
+    vertical-align: top;
+    position: relative;
+    z-index: 1;
+    margin: 0 20px 65px 20px;
+}   
+.commodity-list dl .show_tips {
+    border-color: #dedcdc;
+}
+.commodity-list dl dt {
+    width: 240px;
+    height: 240px;
+    background: url(http://pic16.secooimg.com/imagesPic/searchlist/snew_loading.jpg) no-repeat center 140px;
+}
+img {
+    vertical-align: middle;
+    border: 0;
+}
+.commodity-list dl .dl_tips {
+    height: 16px;
+    width: 240px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.commodity-list dl .dl_tips .s1 {
+    background: #000;
+}
+.commodity-list dl .show_tips .dl_tips span {
+    padding: 0 4px;
+    height: 16px;
+    line-height: 18px;
+    margin: 0 3px 0 0;
+    color: #fff;
+}
+.commodity-list dl .dl_tips .s2 {
+    background: #e93b39;
+}
+.commodity-list dl .dl_name {
+    display: block;
+    height: 28px;
+    padding: 8px 0 3px;
+    line-height: 15px;
+    overflow: hidden; 
+    border-top: 1px solid #ebebeb;
+    margin-top: 10px;
+    font-size: 12px;
+}
+.commodity-list dl .dl_name a{
+    line-height: 15px;
+    color: #323232;
+    text-decoration: none;
+}
+.commodity-list dl dd.dl_name a:visited {
+    color: #666 !important;
+}
+.commodity-list dl .dl_price {
+    padding-top: 3px;
+}
+.commodity-list dl .dl_price span {
+    font: bold 12px/16px "Tahoma";
+}
+.commodity-list dl .dl_price span i {
+    font: bold 12px/16px "microsoft yahei";
+}
+.commodity-list dl .loveHeart {
+    position: absolute;
+    width: 38px;
+    text-indent: 14px;
+    height: 20px;
+    background: url(http://pic16.secooimg.com/imagesPic/searchlist/repeat-d1.png) no-repeat 0 6px;
+    right: 13px;
+    bottom: 20px;
+    display: none;
+    cursor: pointer;
+    color: #999;
+    line-height: 20px;
+}
+.commodity-list dl .loveHeart i {
+    font-style: normal;
+    overflow: hidden;
+    height: 20px;
+    font-size: 12px
+}
