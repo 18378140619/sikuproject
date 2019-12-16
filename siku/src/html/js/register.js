@@ -74,6 +74,7 @@ $(() => {
         if ($("#readProtocol").is(":checked") == false) {
             alert("请阅读并同意用户协议！！！");
         };
+        if ($(".form-group-error").length == 0 && $("#readProtocol").is(":checked") != false){
         $.ajax({
             type: "post",
             url: "../server/register.php",
@@ -81,11 +82,11 @@ $(() => {
             dataType: "json",
             success: function (data) {
                 if (data.status == "success") {
-                    window.location.href = "https://www.jianke.com/";
+                    window.location.href = "http://www.secoo.com/";
                 } else {
                     alert(data.data.msg)
                 }
             }
-        });
+        })}
     })
 })

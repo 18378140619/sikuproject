@@ -1,5 +1,6 @@
 <?php
 	// include './config.php';
+	// $db->query("set names 'utf8'");
 	// 关闭php的错误提示
 	error_reporting(0);
 	$config = $_REQUEST;

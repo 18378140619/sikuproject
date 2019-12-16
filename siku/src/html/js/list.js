@@ -8,15 +8,34 @@ $(() => {
     //         renderUI(data)
     //     }
     // });
-    getDataWithPage(1)
-    function getDataWithPage(type) {
+    $.ajax({
+        type: "get",
+        url: "../server/getcount.php",
+        dataType: "json",
+        success: (data) => {
+            let res = "";
+            for (let i = 0; i < data.count; i++) {
+                res += `<a href="javascript:;">${i + 1}</a>`
+            }
+            $("#page").html(res);
+            $("#page").children().eq(0).addClass("active");
+        }
+    });
+
+    getDataWithPage(0,1)
+    function getDataWithPage(type,page) {
         $.ajax({
             type: "post",
             url: "../server/listgetsj.php",
-            data: `sortType=${type}`,
+            data: `sortType=${type}&page=${page}`,
             dataType: "json",
             success: function (data) {
-                renderUI(data)
+                renderUI(data);
+                $(".show_tips").hover(function () {
+                        $(this).toggleClass("bordertab")
+                        $(this).children("span").toggleClass("cur")
+                    }
+                );
             }
         });
     }
@@ -45,15 +64,18 @@ $(() => {
         }).join("")
         $(".commodity-list").html(html)
     }
+    $.t=1;
     $(".typeBtn").click(function () { 
         $(this).addClass("tab").siblings().removeClass("tab")
-        let type=$(this).index()
-        getDataWithPage(type)
+        let type=$(this).index();
+        $.t=type;
+        console.log($.t,type);
+        getDataWithPage(type,1)
     })
 
-
+    $("#page").on("click", "a", function() {
+        console.log($.t,$(this).text());
+        getDataWithPage($.t,$(this).text());
+        $(this).addClass("active").siblings().removeClass("active");
+    })
 })
-
-// addmoueseven() {
-
-// }
