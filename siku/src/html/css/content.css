@@ -85,6 +85,22 @@ img {
     border: 0;
 }
 
+.zoomdiv {
+    position: absolute;
+    top: -1px;
+    left: 400px;
+    width: 460px;
+    height: 400px;
+    overflow: hidden;
+    z-index: 6;
+    display:none;
+    border: 1px solid #ccc;
+}
+.zoomdiv img{
+    width: 800px;
+    height: 800px;
+    position: absolute;
+}
 .zoomspan {
     display: none;
     position: absolute;
@@ -101,12 +117,27 @@ img {
     padding: 20px 0 0 14px;
 }
 
+.share_box i {
+    background-image: url(http://pic16.secooimg.com/home/detail/detail_icon6.png);
+}
+
 .fl {
     float: left;
 }
 
 .share_text span {
     width: 104px;
+}
+
+.share_text span i,
+.share_icon span i,
+.live_icon span i {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
 }
 
 .share_box span {
@@ -117,9 +148,31 @@ img {
     padding-right: 5px;
 }
 
-.share_text span.sh1 i {
+.share_text .sh1 i {
     background-position: 0 -160px;
-    padding-right: 10px;
+}
+
+.share_text span.sh2 i {
+    background-position: 0 -201px;
+}
+
+.share_text span.sh3 i {
+    background-position: 3px -243px;
+}
+
+.share_text span.sh4 i {
+    width: 18px;
+    background-position: 0 1px;
+}
+
+.share_text span.sh5 i {
+    width: 25px;
+    background-position: 0 -39px;
+}
+
+.share_text span i {
+    width: 28px;
+    height: 18px;
 }
 
 .share_icon span {
@@ -131,10 +184,12 @@ img {
     zoom: 1;
     display: inline;
 }
-.share_box span a{
-    color: #676767 ;
+
+.share_box span a {
+    color: #676767;
     font-size: 12px;
 }
+
 .info_r {
     float: right;
     width: 597px;
@@ -186,6 +241,7 @@ img {
     line-height: 42px;
     height: 33px;
 }
+
 .pdd ul li a span {
     background: #fff;
     display: block;
@@ -197,18 +253,22 @@ img {
     line-height: 30px;
     color: #666
 }
+
 .pdd ul li.on a span {
     border: 2px solid #806ab4;
     padding: 0;
 }
+
 .pdd {
     line-height: 22px;
     width: 495px;
 }
+
 .f18 {
     font-size: 18px;
     font-family: microsoft yahei;
 }
+
 .pdd .Dprice {
     font-size: 30px;
     font-weight: 500;
@@ -230,9 +290,11 @@ img {
     vertical-align: 0;
     padding-right: 1px;
 }
+
 .pdd .countNm a.down {
     background-position: right -69px;
 }
+
 .pdd .countNm span {
     border-top: 1px solid #ededed;
     border-bottom: 1px solid #ededed;
@@ -241,6 +303,7 @@ img {
     background: #fff;
     display: block;
 }
+
 .pdd .countNm input {
     border: 0 none;
     display: block;
@@ -249,6 +312,7 @@ img {
     line-height: 18px;
     text-align: center;
 }
+
 .pdd .countNm a.up {
     background-position: right -47px;
 }
@@ -259,12 +323,14 @@ img {
     width: 21px;
     height: 22px;
 }
+
 .pdd .countNm a {
     display: block;
     background: url(http://pic16.secooimg.com/home/detail/detail_icon6.png) no-repeat;
     width: 21px;
     height: 22px;
 }
+
 .rmb {
     font-family: Microsoft yahei;
 }
@@ -378,9 +444,11 @@ img {
     width: 160px;
     height: 160px;
 }
+
 .proList_icon {
     padding: 8px 0 0 20px;
 }
+
 .proList_icon .prompt {
     height: 20px;
     margin: 0;
@@ -390,7 +458,30 @@ img {
     margin-top: 10px;
     color: #e93a38;
 }
-.pdd .size_table a i, .fsFixedTop b, .info_l dl dd a.on i, .info_l dl dd .prev, .info_l dl dd .next, .userRevi .dlLast, .reviewRight a, .s-left-list li a.to_cart, .fBox_btn a, .fBox .f_plus, .share_box i, .prompt a i, .proList_box, .proName, .yh-act-tips i {
+
+.pdd .size_table a i,
+.fsFixedTop b,
+.info_l dl dd a.on i,
+.info_l dl dd .prev,
+.info_l dl dd .next,
+.userRevi .dlLast,
+.reviewRight a,
+.s-left-list li a.to_cart,
+.fBox_btn a,
+.fBox .f_plus,
+.share_box i,
+.prompt a i,
+.proList_box,
+.proName,
+.yh-act-tips i {
     background-image: url(http://pic16.secooimg.com/home/detail/detail_icon6.png);
     /* background-repeat: no-repeat; */
+}
+
+.ss {
+    width: 1200px;
+    margin: 30px auto;
+}
+.info_l dt .cur{
+    display: block
 }

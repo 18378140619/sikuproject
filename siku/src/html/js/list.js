@@ -1,29 +1,24 @@
 $(() => {
-    // $.ajax({
-    //     type: "post",
-    //     url: "../server/listgetsj.php",
-    //     // data: "data",
-    //     dataType: "json",
-    //     success: function (data) {
-    //         renderUI(data)
-    //     }
-    // });
-    $.ajax({
-        type: "get",
-        url: "../server/getcount.php",
-        dataType: "json",
-        success: (data) => {
-            let res = "";
-            for (let i = 0; i < data.count; i++) {
-                res += `<a href="javascript:;">${i + 1}</a>`
+    new Promise(function (resolve, reject) {
+        $.ajax({
+            type: "get",
+            url: "../server/getcount.php",
+            dataType: "json",
+            success: (data) => {
+                let res = "";
+                for (let i = 0; i < data.count; i++) {
+                    res += `<a href="javascript:;">${i + 1}</a>`
+                }
+                $("#page").html(res);
+                $("#page").children().eq(0).addClass("active");
+                resolve();
             }
-            $("#page").html(res);
-            $("#page").children().eq(0).addClass("active");
-        }
-    });
+        });
+    }).then(function () {
+        getDataWithPage(0, 1) //排序从0开始  页码从1开始
+    })
 
-    getDataWithPage(0,1)
-    function getDataWithPage(type,page) {
+    function getDataWithPage(type, page) {
         $.ajax({
             type: "post",
             url: "../server/listgetsj.php",
@@ -32,10 +27,16 @@ $(() => {
             success: function (data) {
                 renderUI(data);
                 $(".show_tips").hover(function () {
-                        $(this).toggleClass("bordertab")
-                        $(this).children("span").toggleClass("cur")
-                    }
-                );
+                    $(this).toggleClass("bordertab");
+                    $(this).children("span").toggleClass("cur");
+                });
+                $(".show_tips").click(function () {
+                    let name = $(this).children(".dl_name").text().trim();
+                    let price = $(this).children(".dl_price").text().trim().slice(1);
+                    let src = $(this).children("dt").children("img").attr("src");
+                    var s = `name=${name},price=${price},src=${src} `
+                    window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/content.html?" + s
+                })
             }
         });
     }
@@ -57,25 +58,24 @@ $(() => {
             <dd class="dl_price clearfix">
                 <span id="secoo_price_57251996"><i>￥</i>${ele.price}</span>
             </dd>
-            <span class="loveHeart" id="love_heart_57251996"><i>收藏</i>
+            <span class="loveHeart" id="love_heart_57251996"><i  class="iconfont icon-3"> 加入购物车</i>
             </span>
         </div>
     </dl>`
         }).join("")
         $(".commodity-list").html(html)
     }
-    $.t=1;
-    $(".typeBtn").click(function () { 
+    $.t = 1;
+    $(".typeBtn").click(function () {
         $(this).addClass("tab").siblings().removeClass("tab")
-        let type=$(this).index();
-        $.t=type;
-        console.log($.t,type);
-        getDataWithPage(type,1)
+        $.t = $(this).index();
+        $("#page a").eq(0).addClass("active").siblings().removeClass("active");
+        getDataWithPage($.t, 1);
     })
 
-    $("#page").on("click", "a", function() {
-        console.log($.t,$(this).text());
-        getDataWithPage($.t,$(this).text());
+    $("#page").on("click", "a", function () {
+        getDataWithPage($.t, $(this).text());
         $(this).addClass("active").siblings().removeClass("active");
     })
+
 })

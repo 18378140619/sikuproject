@@ -34,8 +34,6 @@ $(() => {
             $(".nav-menu").append(html)
         }
         addmoueseven(){
-            console.log($(".public-media span"));
-            
             $(".public-media span").hover(function () {
                 $(this).next().toggleClass("cur")
             })
@@ -44,5 +42,12 @@ $(() => {
             })
         }
     }
-    new MargerA(data).init()
+    $.ajax({
+        type: "get",
+        url: "../server/nav.php",
+        dataType: "json",
+        success: function (response) {
+            new MargerA(response).init()
+        }
+    });
 })

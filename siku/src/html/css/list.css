@@ -123,16 +123,19 @@ img {
 
 .commodity-list dl .loveHeart {
     position: absolute;
-    width: 38px;
+    width: 120px;
     text-indent: 14px;
     height: 20px;
-    background: url(http://pic16.secooimg.com/imagesPic/searchlist/repeat-d1.png) no-repeat 0 6px;
-    right: 13px;
+    /* background: url(http://pic16.secooimg.com/imagesPic/searchlist/repeat-d1.png) no-repeat 0 6px; */
+    right: 0px;
     bottom: 20px;
     display: none;
     cursor: pointer;
     color: #999;
     line-height: 20px;
+}
+.commodity-list dl .loveHeart:hover{
+    color: red;
 }
 
 .commodity-list dl .loveHeart i {
