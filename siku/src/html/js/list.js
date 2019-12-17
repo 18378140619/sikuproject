@@ -7,7 +7,7 @@ $(() => {
             success: (data) => {
                 let res = "";
                 for (let i = 0; i < data.count; i++) {
-                    res += `<a href="javascript:;">${i + 1}</a>`
+                    res += `<a href="#top">${i + 1}</a>`
                 }
                 $("#page").html(res);
                 $("#page").children().eq(0).addClass("active");
@@ -30,12 +30,27 @@ $(() => {
                     $(this).toggleClass("bordertab");
                     $(this).children("span").toggleClass("cur");
                 });
-                $(".show_tips").click(function () {
+                $(".show_tips").click(function () {//跳转详情页
                     let name = $(this).children(".dl_name").text().trim();
                     let price = $(this).children(".dl_price").text().trim().slice(1);
                     let src = $(this).children("dt").children("img").attr("src");
                     var s = `name=${name},price=${price},src=${src} `
                     window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/content.html?" + s
+                })
+                $(".loveHeart").click(function(){//加入购物车
+                    let name = $(this).parent().children(".dl_name").text().trim();
+                    let price = $(this).parent().children(".dl_price").text().trim().slice(1);
+                    let src = $(this).parent().children("dt").children("img").attr("src");
+                    event.stopPropagation();//阻止冒泡流
+                    $.ajax({
+                        type: "post",
+                        url: "../server/addcart.php",
+                        data: `src=${src}&name=${name},&price=${price}`,
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
                 })
             }
         });

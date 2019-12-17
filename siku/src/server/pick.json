@@ -1,4 +1,4 @@
-datapick=[{
+[{
 	"src": "http://pic11.secooimg.com/product/300/300/2019/0620/270623d0ad464ae395688fc419ee6fbe.jpg",
 	"name": "GIUSEPPE DI MORABITO/GIUSEPPE DI MORABITO",
 	"desc": "【LVR】19秋冬 GIUSEPPE DI MORABITO/GIUSEPPE DI MORABITO女士 水晶纽扣仿阿斯特拉罕羔羊皮大衣",
@@ -274,13 +274,3 @@ datapick=[{
 	"desc": "【LVR】SCHOTT/SCHOTT 19秋冬 男士 “lc 1259”连帽剪羊毛飞行员夹克 70I-3L6002_QlJPV041",
 	"price": "￥9,053"
 }]
-// let data=[]
-// let oLis = document.querySelector(".product-list").children;
-// for (let index = 0; index < oLis.length; index++) {
-//     let o = {};
-//     o.src = oLis[index].querySelector(".lazyPic").src
-//     o.name = oLis[index].querySelector(".product-name").innerText
-//     o.desc = oLis[index].querySelector(".product-desc").innerText
-//     o.price = oLis[index].querySelector(".product-price").innerText
-//     data.push(o)
-// }

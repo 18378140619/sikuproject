@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="./font_icon/iconfont.css">
     <script src="./js/jquery.js"></script>
-    <script src="./js/nav.js"></script>
     <script src="./js/headerfoot.js"></script>
     <script src="./js/contert.js"></script>
 </head>
@@ -48,8 +47,7 @@
                     <li class="nav-item"><a>首页</a></li>   
                 </ul>
                 <div class="search-inner">
-                    <input class="search-input" data-value="搜索" data-focus="搜索商品、品牌" value="搜索" placeholder="搜索"
-                        type="button">
+                    <input class="search-input"  value="搜索" placeholder="搜索商品、品牌" type="text">
                     <span class="icon-search">
                         <i class="iconfont icon-sousuo"></i>
                     </span>
@@ -225,13 +223,12 @@
                         <div class="pdt fl">购买数量</div>
                         <div class="pdd fl">
                             <div class="countNm">
-                                <a href="javascript:;" class="down fl" id="subProduct"
-                                    onclick="productCarOper('sub')"></a>
+                                <a href="javascript:;" class="down fl" id="subProduct"></a>
                                 <span class="num fl">
-                                    <input type="text" onblur="checkCarOper()" id="buyNumVal" value="1">
+                                    <input type="text"  id="buyNumVal" value="1">
                                 </span>
-                                <a href="javascript:;" class="up fl" id="addProduct"
-                                    onclick="productCarOper('add')"></a>
+                                <a href="javascript:;" class="up fl" id="addProduct"></a>
+                                <a class="addshop" href="javascript:;   ">加入购物车</a>
                             </div>
                             <span class="delivery" id="lastProductNum"></span>
                         </div>

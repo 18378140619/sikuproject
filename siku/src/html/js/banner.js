@@ -46,7 +46,14 @@ $(() => {
             })
         }
     }
-    new Margerbanner(databanner).init()
+    $.ajax({
+        type: "get",
+        url: "../server/banner.php",
+        dataType: "json",
+        success: function (response) {
+            new Margerbanner(response).init()
+        }
+    });
 })
 
 // addmoueseven() {

@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>购物车</title>
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./font_icon/iconfont.css">
-    <link rel="stylesheet" href="./css/list.css">
     <link rel="stylesheet" href="./css/headerfoot.css">
+    <link rel="stylesheet" href="./css/shopcart.css">
+    <link rel="stylesheet" href="./font_icon/iconfont.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/headerfoot.js"></script>
-    <script src="./js/list.js"></script>
+    <script src="./js/shopcart.js"></script>
 </head>
 
 <body>
@@ -44,10 +44,10 @@
         <div class="nav-bar">
             <div class="ncontainer">
                 <ul class="nav-menu clearfix">
-                    <li class="nav-item"><a>首页</a></li>
+                    <li class="nav-item"><a class="ss">首页</a></li>
                 </ul>
                 <div class="search-inner">
-                    <input class="search-input"  value="搜索" placeholder="搜索商品、品牌" type="text">
+                    <input class="search-input" value="搜索" placeholder="搜索商品、品牌" type="text">
                     <span class="icon-search">
                         <i class="iconfont icon-sousuo"></i>
                     </span>
@@ -55,17 +55,127 @@
             </div>
         </div>
     </header>
-    <div class="btn-class">
-        <span class="typeBtn">综合</span>
-        <span class="typeBtn">价格降序</span>
-        <span class="typeBtn">价格升序</span>
-    </div>
-    <div class="commodity-list clearfix">
-    </div>
-    <div id="page" class="page"></div>
-    <div class="fixed-qrcode" style="display: block;">
-        <img class="zh" src="http://pic11.secooimg.com/push/2019/1104/1dc88493a92a4cccbefdaf9f4be61c3f.jpg">
-    </div>
+    <div class="w">
+        <div class="cart-warp">
+            <!-- 头部全选模块 -->
+            <div class="cart-thead">
+                <div class="t-checkbox">
+                    <input type="checkbox" name="" id="" class="checkall"> 全选
+                </div>
+                <div class="t-goods">商品</div>
+                <div class="t-price">单价</div>
+                <div class="t-num">数量</div>
+                <div class="t-sum">小计</div>
+                <div class="t-action">操作</div>
+            </div>
+            <!-- 商品详细模块 -->
+            <div class="cart-item-list">
+                <div class="cart-item check-cart-item">
+                    <div class="p-checkbox">
+                        <input type="checkbox" name="" id="" checked class="j-checkbox">
+                    </div>
+                    <div class="p-goods">
+                        <div class="p-img">
+                            <img src="https://img.alicdn.com/bao/uploaded/i7/TB1.LSJdJLO8KJjSZPcRnuV0FXa_093929.jpg"
+                                alt="">
+                        </div>
+                        <p class="p-msg">【5本26.8元】经典儿童文学彩图青少版八十天环游地球中学生语文教学大纲</p>
+                    </div>
+                    <div class="p-price">￥12.60</div>
+                    <div class="p-num">
+                        <div class="quantity-form">
+                            <a href="javascript:;" class="decrement">-</a>
+                            <input type="text" class="itxt" value="1">
+                            <a href="javascript:;" class="increment">+</a>
+                        </div>
+                    </div>
+                    <div class="p-sum">￥12.60</div>
+                    <div class="p-action"><a href="javascript:;">删除</a></div>
+                </div>
+                <div class="cart-item check-cart-item">
+                    <div class="p-checkbox">
+                        <input type="checkbox" name="" id="" checked class="j-checkbox">
+                    </div>
+                    <div class="p-goods">
+                        <div class="p-img">
+                            <img src="https://img.alicdn.com/bao/uploaded/i7/TB1.LSJdJLO8KJjSZPcRnuV0FXa_093929.jpg"
+                                alt="">
+                        </div>
+                        <p class="p-msg">【5本26.8元】经典儿童文学彩图青少版八十天环游地球中学生语文教学大纲</p>
+                    </div>
+                    <div class="p-price">￥12.60</div>
+                    <div class="p-num">
+                        <div class="quantity-form">
+                            <a href="javascript:;" class="decrement">-</a>
+                            <input type="text" class="itxt" value="1">
+                            <a href="javascript:;" class="increment">+</a>
+                        </div>
+                    </div>
+                    <div class="p-sum">￥12.60</div>
+                    <div class="p-action"><a href="javascript:;">删除</a></div>
+                </div>
+                <div class="cart-item check-cart-item">
+                    <div class="p-checkbox">
+                        <input type="checkbox" name="" id="" checked class="j-checkbox">
+                    </div>
+                    <div class="p-goods">
+                        <div class="p-img">
+                            <img src="https://img.alicdn.com/bao/uploaded/i7/TB1.LSJdJLO8KJjSZPcRnuV0FXa_093929.jpg"
+                                alt="">
+                        </div>
+                        <p class="p-msg">【5本26.8元】经典儿童文学彩图青少版八十天环游地球中学生语文教学大纲</p>
+                    </div>
+                    <div class="p-price">￥12.60</div>
+                    <div class="p-num">
+                        <div class="quantity-form">
+                            <a href="javascript:;" class="decrement">-</a>
+                            <input type="text" class="itxt" value="1">
+                            <a href="javascript:;" class="increment">+</a>
+                        </div>
+                    </div>
+                    <div class="p-sum">￥12.60</div>
+                    <div class="p-action"><a href="javascript:;">删除</a></div>
+                </div>
+                <div class="cart-item check-cart-item">
+                    <div class="p-checkbox">
+                        <input type="checkbox" name="" id="" checked class="j-checkbox">
+                    </div>
+                    <div class="p-goods">
+                        <div class="p-img">
+                            <img src="https://img.alicdn.com/bao/uploaded/i7/TB1.LSJdJLO8KJjSZPcRnuV0FXa_093929.jpg"
+                                alt="">
+                        </div>
+                        <p class="p-msg">【5本26.8元】经典儿童文学彩图青少版八十天环游地球中学生语文教学大纲</p>
+                    </div>
+                    <div class="p-price">￥12.60</div>
+                    <div class="p-num">
+                        <div class="quantity-form">
+                            <a href="javascript:;" class="decrement">-</a>
+                            <input type="text" class="itxt" value="1">
+                            <a href="javascript:;" class="increment">+</a>
+                        </div>
+                    </div>
+                    <div class="p-sum">￥12.60</div>
+                    <div class="p-action"><a href="javascript:;">删除</a></div>
+                </div>
+            </div>
+            <!-- 结算模块 -->
+            <div class="cart-floatbar">
+                <div class="select-all">
+                    <input type="checkbox" name="" id="" class="checkall">全选
+                </div>
+                <div class="operation">
+                    <a href="javascript:;" class="remove-batch"> 删除选中的商品</a>
+                    <a href="javascript:;" class="clear-all">清理购物车</a>
+                </div>
+                <div class="toolbar-right">
+                    <div class="amount-sum">已经选<em>1</em>件商品</div>
+                    <div class="price-sum">总价： <em>￥12.60</em></div>
+                    <div class="btn-area">去结算</div>
+                </div>
+            </div> <!-- cart-floatbar end -->
+        </div> <!-- cart-warp end -->
+    </div> <!-- w end -->
     <div class="nfooter">
         <div class="ncontainer">
             <ul class="footer-links clearfix">

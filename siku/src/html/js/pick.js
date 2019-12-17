@@ -59,7 +59,14 @@ $(() => {
             });
         }
     }
-    new MargerPick(datapick).init()
+    $.ajax({
+        type: "get",
+        url: "../server/pick.php",
+        dataType: "json",
+        success: function (response) {
+            new MargerPick(response).init()
+        }
+    });
 })
 
 // addmoueseven() {

@@ -61,7 +61,14 @@ $(() => {
             $(".main").html(html)
         }
     }
-    new Margermain(datamain).init()
+    $.ajax({
+        type: "get",
+        url: "../server/main.php",
+        dataType: "json",
+        success: function (response) {
+            new Margermain(response).init()
+        }
+    });
 })
 
 // addmoueseven() {

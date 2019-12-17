@@ -43,4 +43,17 @@ $(()=>{
             "top": -oMaskY * biliY
         })
     })
+
+    //点击加数量
+    $("#subProduct").click(()=>{
+        let count= $("#buyNumVal").val();
+        count--;
+        if(count<1) count=1;
+        $("#buyNumVal").val(count);
+    })
+    $("#addProduct").click(()=>{
+        let count= $("#buyNumVal").val();
+        count++;
+        $("#buyNumVal").val(count)
+    })
 })
