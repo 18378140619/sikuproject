@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/headerfoot.css">
+    <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./font_icon/iconfont.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/nav.js"></script>
+    <script src="./js/headerfoot.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="head-lang">
+                <div class="region-selection">
+                    <h4 class="selected-region">中文</h4>
+                    <i class="iconfont icon-play"></i>
+                    <ul style="display: none;">
+                        <li class="region-option">中文</li>
+                        <li class="region-option">EN</li>
+                    </ul>
+                </div>
+                <div class="separate-line"></div>
+                <p class="currency-selection">RMB ¥</p>
+            </div>
+            <div class="head-logo">
+                <img src="http://pic10.secooimg.com/push/18/11/013e7d9eb7674c799c3c21e84dd1c88a.jpg" alt="寺库">
+            </div>
+            <div class="head-site clearfix">
+                <a href="http://127.0.0.1/code/sikuproject/siku/src/html/login.html">登录</a>
+                <div class="separate-line"></div>
+                <a href="http://127.0.0.1/code/sikuproject/siku/src/html/register.html">注册</a>
+                <div class="separate-line"></div>
+                <i class="iconfont icon-shoucang"></i>
+            </div>
+        </div>
+        <div class="nav-bar">
+            <div class="ncontainer">
+                <ul class="nav-menu clearfix">
+                    <li class="nav-item"><a>首页</a></li>
+                </ul>
+                <div class="search-inner">
+                    <input class="search-input" data-value="搜索" data-focus="搜索商品、品牌" value="搜索" placeholder="搜索"
+                        type="button">
+                    <span class="icon-search">
+                        <i class="iconfont icon-sousuo"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sopdetailsCon">
+        <div class="smallNav">
+            <p>
+                <a href="">首页</a>&gt;
+                <a href="">彩妆香氛</a>&gt;
+
+                <a href="">香水</a>&gt;
+                <a href="">女士香水</a> &gt;
+
+                <!--显示商品品牌-->
+                <a href="">古驰</a>&gt;
+
+                <a href="">【热卖】【包税】【倪妮同款】GUCCI/古驰 绿色花悦绽放繁花之水女士淡香水50-100ML</a>
+            </p>
+            <span>商品编码：40304317</span>
+        </div>
+        <div class="contents clearfix">
+            <div class="info_l">
+                <dl class="clearfix" id="imgshow">
+                    <dd>
+                        <div class="move_box">
+                            <div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dt>
+                        <!-- 备注，后期需要修改成400/400 -->
+                        <img class="jqzoom"
+                            src="http://pic11.secooimg.com/product/500/500/10/99/eca6b092aeef44cf957627c3366acb9d.jpg"
+                            alt="" width="400" height="400">
+                        <div class="zoomdiv"
+                            style="top: -1px; left: 430px; width: 460px; height: 400px; display: none;">
+                            <img class="bigimg"
+                                src="http://pic11.secooimg.com/product/500/500/10/99/eca6b092aeef44cf957627c3366acb9d.jpg">
+                        </div>
+                        <div class="zoomspan" style="display: none; left: 97.5px; top: 0px;"></div>
+                    </dt>
+                </dl>
+                <div class="share_box clearfix">
+                    <div class="share_text fl">
+                        <span class="sh1"><i></i><a href="http://www.secoo.com/static/help/7_1.shtml"
+                                target="_blank">正品保障</a>
+                        </span>
+                        <span class="sh2"><i></i><a href="http://www.secoo.com/static/help/4_1.shtml"
+                                target="_blank">七天退换</a>
+                        </span>
+                        <span class="sh3"><i></i><a href="http://www.secoo.com/static/help/7_1.shtml"
+                                target="_blank">权威质检</a>
+                        </span>
+                        </span>
+                        <span class="sh3"><i class="iconfont icon-fenxiangfangshi"></i><a href="http://www.secoo.com/static/help/7_1.shtml"
+                                target="_blank">分享</a>
+                        </span>
+                        <span class="sh3"><i class="iconfont icon-shoucang"></i><a>收藏商品</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info_r">
+                <div class="proName">
+                    <h2>【热卖】【包税】【倪妮同款】GUCCI/古驰 绿色花悦绽放繁花之水女士淡香水50-100ML</h2>
+                    <h3 id="subHeadSpan"></h3>
+                </div>
+
+                <div class="proDetails" id="proDetails">
+
+                    <div class="proList clearfix">
+                        <div id="secooNameJs" class="pdt fl"
+                            style="line-height: 42px; *line-height: 48px; height:33px;">
+                            <span class="colorRed f18">一&nbsp;口&nbsp;价</span></div>
+                        <div class="pdd fl" style="min-height: 32px;*height:auto">
+                            <strong class="Dprice"><b><span class="rmb">¥</span>
+                                </b>
+                            </strong> <strong class="Dprice" id="secooPriceJs">625</strong>
+
+                            <span class="sale" style="display: none;">
+                            </span>
+
+                            <span class="mprice" style="display: none;"><span class="rmb">¥</span><span class="rmb"
+                                    style="font-family: tahoma;"></span></span>
+
+
+                        </div>
+                    </div>
+                    <!-- 预热活动价 -->
+                    <div class="proList clearfix " id="tempActivityDiv" style="display: none">
+                        <div class="pdt fl" id="tempActivityText"></div>
+                        <div class="pdd fl">
+                            <span class="smallDprice padRight_20" id="tempActivityPrice"></span><span
+                                et="<!--这里需要一个结束时间戳-->" class="timelin timecol" id="tempActivityTimer"></span>
+                        </div>
+                    </div>
+
+                    <div class="proList clearfix" id="promotionInfoSpan" style="display: none">
+                        <div class="pdt fl" id="promotionInfoText">促销信息</div>
+                        <div class="pdd fl" id="promotionInfoSpanContent">
+                            <div class="parent_tips_prom " id="exclusiveDiv" style="display: none"></div>
+                            <div class="parent_tips_prom" id="promotionRealDiv" style="display: none"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="proList clearfix" id="inventoryDiv">
+                        <div class="pdt fl">发货地</div>
+                        <div class="pdd fl">
+
+                            <div class="tips_hover">
+                                <span class="fl"> <em id="location-t">香港</em> <i id="youhuo">有货</i> </span>
+                            </div>
+                            <span class="delivery"><i>预计<span class="color9d0">15-30</span>个工作日内送达</i></span>
+                            <div class="tips_delivery"></div>
+                        </div>
+                    </div>
+
+                    <div class="proList clearfix">
+                        <div class="pdt fl">温馨提示</div>
+                        <div class="pdd fl" id="specialSign">
+                            <span>本商品无质量问题不支持退换货</span>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="proList clearfix">
+                        <div class="pdt fl">商品信息</div>
+                        <div class="pdd fl"><span>自营</span><br></div>
+                    </div>
+                    <div class="elseSP" style="display: none;">
+                        <h5>相关商品</h5>
+                        <div class="elseCon">
+                            <div class="es-con">
+                                <ul class="esConUl clearfix" id="OtherProduct_show"
+                                    style="width: 10px; margin-left: 0px;">
+
+                                </ul>
+                            </div>
+                            <div class="es-nav"><span class="es-nav-prev" style="display: none;">Previous</span><span
+                                    class="es-nav-next" style="display: none;">Next</span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="proList_box clearfix">
+                    <div class="proList clearfix psize">
+                        <div class="pdt fl" id="flagColor1">毫升</div>
+                        <div class="pdd fl">
+                            <ul>
+                                <li name="productSpecInfo" onclick="selSpec(this)" codes=",40304324," imgflag="0"
+                                    skuid="40304324" class=""><a
+                                        href="javascript:void(0);"><span>100ml</span></a><label></label></li>
+                                <li name="productSpecInfo" onclick="selSpec(this)" codes=",40304317," imgflag="0"
+                                    skuid="40304317" class="on"><a
+                                        href="javascript:void(0);"><span>50ml</span></a><label></label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--多规格 start-->
+
+
+                    <!--多规格 end-->
+
+
+
+                    <div class="proList clearfix pNum">
+                        <div class="pdt fl">购买数量</div>
+                        <div class="pdd fl">
+                            <div class="countNm">
+                                <a href="javascript:;" class="down fl" id="subProduct"
+                                    onclick="productCarOper('sub')"></a>
+                                <span class="num fl">
+                                    <input type="text" onblur="checkCarOper()" id="buyNumVal" value="1">
+                                </span>
+                                <a href="javascript:;" class="up fl" id="addProduct"
+                                    onclick="productCarOper('add')"></a>
+                            </div>
+                            <span class="delivery" id="lastProductNum"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="prompt clearfix pselected">
+                    </div>
+
+                    <div class="prompt clearfix">
+                        <div id="pqrCode">
+                            <p>微信扫码下单更优惠</p>
+                            <img src="http://pic10.secooimg.com/imagesPic/homePic/pic28.jpg" alt="" srcset="">
+                        </div>
+                        <a href="javascript:;" class="topanic fl" id="addBindCar" title="立即抢购"></a>
+                        <a href="javascript:;" class="tocart fl" id="addCarInfo" title="加入购物车"></a>
+                        <a href="javascript:;" class="staging fl" id="addfq" style="display:none;"><i></i>分期支付</a>
+                    </div>
+                </div>
+
+                <div class="proList_icon clearfix">
+                    <div class="prompt">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nfooter">
+        <div class="ncontainer">
+            <ul class="footer-links clearfix">
+                <li class="service-information">
+                    <h4 class="links-title zh">服务指南</h4>
+                    <ul class="clearfix">
+                        <li class="links-item zh">
+                            <a href="">Investors</a>
+                        </li>
+                        <li class="links-item zh">
+                            <a href="">物流配送</a>
+                        </li>
+                        <li class="links-item zh">
+                            <a href="">售后服务</a>
+                        </li>
+                        <li class="links-item zh">
+                            <a href="">联系我们</a>
+                        </li>
+                        <li class="links-item zh">
+                            <a href="">加入我们</a>
+                        </li>
+                        <li class="links-item zh">
+                            <a href="">帮助</a>
+                        </li>
+                        <li class="links-item zh">
+                            <a href="">寺库招商</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="public-media">
+                    <h4 class="links-title zh">公共媒体</h4>
+                    <div class="footer-logo">
+                        <div class="weibo qr-code-p clearfix">
+                            <i class="iconfont icon-apple"></i>
+                            <span class="zh">微博</span>
+                            <div class="qr-code">
+                                <img src="http://pic12.secooimg.com/push/18/11/01a2028fe4e74e0dab23f9e899171a9d.png">
+                            </div>
+                        </div>
+                        <div class="wechat qr-code-p clearfix">
+                            <i class="iconfont icon-weixin icon-wechat"></i>
+                            <span class="zh">微信</span>
+                            <div class="qr-code">
+                                <img src="http://pic14.secooimg.com/push/18/11/671bb2c3a977465289945af8160dd599.png">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="our-app">
+
+                    <h4 class="links-title zh">我们的APP</h4>
+                    <ul class="clearfix">
+
+                        <li class="links-item qr-code-p zh">
+                            <a href="javascript:void(0);">寺库商城</a>
+                            <div class="qr-code poa">
+                                <img src="http://pic13.secooimg.com/push/18/11/7f2ea806edad4471806dd1be4a2ed4dc.png">
+                            </div>
+                        </li>
+                        <li class="links-item qr-code-p zh">
+                            <a href="javascript:void(0);">Try Try</a>
+                            <div class="qr-code poa">
+                                <img src="http://pic12.secooimg.com/push/18/11/5a66b41778324e60bad93c9b01e61f01.png">
+                            </div>
+                        </li>
+                        <li class="links-item qr-code-p zh">
+                            <a href="javascript:void(0);">寺库艺术</a>
+                            <div class="qr-code poa">
+                                <img src="http://pic11.secooimg.com/push/18/11/8876d60e3f624569b6515616da230479.png">
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="footer-info">
+                <p>
+                    <span><a href=""><img class="pp"
+                                src="http://pic12.secooimg.com/res/common/pc/gh.png"></a>京公网安备11010502038706号</span>
+                    <span>京ICP证110119号 京ICP备09084709号-3</span>
+                    <span><a href="">ISO9001中国质量管理体系认证</a></span>
+                    <span><a href="">出版物经营许可证</a></span>
+                    <span><a href="">食品经营许可证</a></span>
+                    <span>京B2-20181305</span>
+                </p>
+                <p>
+                    <span>京食药网食备201810026</span>
+                    <span>(京)-非经营性-2019-0072</span>
+                    <span>客服电话：400-875-6789</span>
+                    <span>COPYRIGHT © 2010-2018 北京寺库商贸有限公司 版权所有</span>
+                </p>
+                <p class="footer-info-imgs" style="overflow: hidden;">
+                    <a href="" rel="nofollow">
+                        <img src="http://pic12.secooimg.com/home/f_01.jpg">
+                    </a>
+                    <a href="" rel="nofollow">
+                        <img src="http://pic12.secooimg.com/imagesNew/featuresPic/vv_qixi_0815/cnnic.png">
+                    </a>
+                    <a href="" rel="nofollow">
+                        <img src="http://pic12.secooimg.com/home/kexin.jpg">
+                    </a>
+                    <a href="">
+                        <img src="http://pic12.secooimg.com/res/common/54b317cf05244c9ab5fcfa18df7d2199.jpg">
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div style="width:300px;margin:0 auto; padding:20px 0;">
+            <a class="aa" target="_blank" href=""
+                style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                <img src="http://pic12.secooimg.com/res/common/pc/gh.png" style="float:left;">
+                <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+                    京公网安备11010502038706号</p>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
