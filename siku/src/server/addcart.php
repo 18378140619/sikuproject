@@ -16,9 +16,10 @@
   $src = $_REQUEST["src"];
   $msg = $_REQUEST["msg"];
   $price = $_REQUEST["price"];
+  $number = $_REQUEST["number"];
   $obj = array("status"=>"", "data"=>array("msg"=>""));
   $db = mysqli_connect("127.0.0.1","root","","siku");
-  $sql = "INSERT INTO `cart` (`id`, `src`, `msg`,`price`,`number`) VALUES (null, '$src', '$msg',$price,1)";
+  $sql = "INSERT INTO `cart` (`id`, `src`, `msg`,`price`,`number`) VALUES (null, '$src', '$msg',$price,$number)";
   $result = mysqli_query($db,$sql);
     $obj["status"] = "success";
     $obj["data"]["msg"] = "加入购物车成功！！！";

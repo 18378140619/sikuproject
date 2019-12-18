@@ -183,6 +183,49 @@ img {
 .page a:active {
     opacity: .8
 }
+/* 遮罩 */
+.love_tips {
+    width: 310px;
+    height: 182px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -155px 0 0 -91px;
+    background: #fff;
+    z-index: 63;
+    box-shadow: 0 0 3px #ccc;
+    display: none;
+}
+.love_tips_title {
+    width: 304px;
+    height: 39px;
+    line-height: 39px;
+    margin: 3px auto;
+    background: #463a7e;
+    color: #fff;
+    font: normal 16px/39px "microsoft yahei";
+    text-indent: 20px;
+}
+.love_tips_title a {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    background: url(http://pic16.secooimg.com/home/detail/detail_icon3.png) no-repeat right -91px;
+    width: 20px;
+    height: 20px;
+}
+.love_tips_text {
+    width: 100%;
+    text-align: center;
+    margin-top: 45px;
+    color: #463a7e;
+    font: normal 24px/24px "microsoft yahei";
+}
+.love_tips_text a {
+    display: block;
+    text-align: center;
+    font-size: 12px
+}
 
 .cur{
     display: block !important;

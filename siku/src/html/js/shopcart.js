@@ -10,7 +10,7 @@ $(() => {
     //     }
     // });
     getdata(0,0,0)
-    function getdata(msg, type,n) {
+    function getdata(msg, type,n=0) {
        $.ajax({
            type: "post",
            url: "../server/getcartsj.php",
@@ -29,12 +29,11 @@ $(() => {
            <div class="p-checkbox">
                <input type="checkbox" name="" id="" class="j-checkbox">
            </div>
-           <div class="p-goods">
+           <div  id="${ele.id}" class="p-goods">
                <div class="p-img">
-                   <img src=${ele.src}
-                       alt="">
+                   <img src=${ele.src} alt="">
                </div>
-               <p class="p-msg">￥${ele.msg}</p>
+               <p class="p-msg">${ele.msg}</p>
            </div>
            <div class="p-price">￥${ele.price}</div>
            <div class="p-num">
@@ -44,7 +43,7 @@ $(() => {
                    <a href="javascript:;" class="increment">+</a>
                </div>
            </div>
-           <div class="p-sum">￥${ele.price}</div>
+           <div class="p-sum">￥${ele.price*ele.number}</div>
            <div class="p-action"><a href="javascript:;">删除</a></div>
        </div>`
         }).join("")
@@ -83,31 +82,20 @@ $(() => {
         // 点击+按钮，文本框数字加一
         $(".increment").click(function () {
             let tt="add";
-            let msg = $(this).parents(".cart-item").children(".p-goods").children(".p-msg").text()
+            let msg = $(this).parents(".cart-item").children(".p-goods").attr("id")
             var n = $(this).siblings(".itxt").val();
             n++;
-            // $(this).siblings(".itxt").val(n); //写入n的值
             getdata(msg,tt,n)
-            // 小计模块
-            // num为获取过来的单价，用substr()截取字符串把前边的￥去掉
-            var num = $(this).parents(".p-num").siblings(".p-price").html().substr(1);
-            // toFixed(2)保留两位小数
-            var price = (num * n).toFixed(2);
-            $(this).parents(".p-num").siblings(".p-sum").html("￥" + price);
             getSum();
         })
         // 点击-按钮，文本框数字减一
         $(".decrement").click(function () {
-            console.log(this);
-
+            let tt="add";
+            let msg = $(this).parents(".cart-item").children(".p-goods").attr("id")
             var n = $(this).siblings(".itxt").val();
             n <= 1 ? n : n--;
-            $(this).siblings(".itxt").val(n);
-            // 小计模块
-            var num = $(this).parents(".p-num").siblings(".p-price").html().substr(1);
-            // toFixed(2)保留两位小数
-            var price = (num * n).toFixed(2);
-            $(this).parents(".p-num").siblings(".p-sum").html("￥" + price);
+            // $(this).siblings(".itxt").val(n);
+            getdata(msg,tt,n)
             getSum();
         })
         // 当用户直接修改文本框时
@@ -121,7 +109,6 @@ $(() => {
         })
         // 计算总额函数
         getSum();
-
         function getSum() {
             var count = 0;
             var money = 0;
@@ -139,12 +126,19 @@ $(() => {
         // 删除商品模块
         // 删除单个商品
         $(".p-action a").click(function () {
-            $(this).parents(".cart-item").remove();
+            let type="deleteone"
+            let msg = $(this).parents(".cart-item").children(".p-goods").attr("id")
+            getdata(msg, type)
             getSum();
         })
         // 删除选中商品
         $(".remove-batch").click(function () {
-            $(".j-checkbox:checked").parents(".cart-item").remove();
+            // console.log($(".j-checkbox:checked"));
+            let t=$(".j-checkbox:checked").length
+             let a= $(".j-checkbox:checked").eq(0).parents(".cart-item").children(".p-goods").attr("id");
+             for(let i=0,len<t;i<len;i++)
+             // let type="deleteone";
+            // getdata(msg, type);
             getSum();
         })
         // 清理购物车

@@ -41,16 +41,21 @@ $(() => {
                     let msg = $(this).parent().children(".dl_name").text().trim();
                     let price = $(this).parent().children(".dl_price").text().trim().slice(1);
                     let src = $(this).parent().children("dt").children("img").attr("src");
+                    let number=1;
                     event.stopPropagation();//阻止冒泡流
                     $.ajax({
                         type: "post",
                         url: "../server/addcart.php",
-                        data: `src=${src}&msg=${msg},&price=${price}`,
+                        data: `src=${src}&msg=${msg}&price=${price}&number=${number}`,
                         dataType: "json",
                         success: function (response) {
                             console.log(response);
                         }
                     });
+                    $(".love_tips").addClass("cur");
+                    setTimeout(()=>{
+                        $(".love_tips").removeClass("cur");
+                    },2000)
                 })
             }
         });

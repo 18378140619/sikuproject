@@ -12,19 +12,28 @@
       $result = mysqli_query($db,$sql);
 
       $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
-      
+ 
       echo json_encode($data,true);
   }
-  if($type=="add")
+  else if($type=="add")
   {
-     $sql1="UPDATE  `siku`.`cart` SET  `number` =  $n WHERE  `cart`.`msg` =$msg";
-    //  $res = $db->query($sql1);
-  //    $data = $res->fetch_all(MYSQLI_ASSOC);
-  //   //  $sql = "SELECT * FROM cart";
-  //   //  $result = mysqli_query($db,$sql);
-  //   //  $data = mysqli_fetch_all($result,MYSQLI_ASSOC);  
-  //    echo json_encode($data,true);
+     $sql1="UPDATE  `siku`.`cart` SET  `number` =  $n WHERE id = $msg";
+     mysqli_query($db,$sql1);
+     $sql = "SELECT * FROM cart";
+     $result = mysqli_query($db,$sql);
+     $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
+     echo json_encode($data,true); 
   }
-
+  else if($type=="deleteone"){
+    $sql2 = "DELETE FROM `siku`.`cart` WHERE id = $msg";
+    mysqli_query($db,$sql2);
+    $sql = "SELECT * FROM cart";
+    $result = mysqli_query($db,$sql);
+    $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    echo json_encode($data,true);
+  }
+  // else if($type=="clear-all"){
+  //   $sql3="truncate table `siku`.`cart`"
+  // }
 
 ?>
