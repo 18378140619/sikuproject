@@ -14,11 +14,11 @@
   
   # 获取客户端提交的参数
   $src = $_REQUEST["src"];
-  $name = $_REQUEST["name"];
+  $msg = $_REQUEST["msg"];
   $price = $_REQUEST["price"];
   $obj = array("status"=>"", "data"=>array("msg"=>""));
   $db = mysqli_connect("127.0.0.1","root","","siku");
-  $sql = "INSERT INTO `cart` (`id`, `src`, `name`,`price`) VALUES (null, '$src', '$name',$price)";
+  $sql = "INSERT INTO `cart` (`id`, `src`, `msg`,`price`,`number`) VALUES (null, '$src', '$msg',$price,1)";
   $result = mysqli_query($db,$sql);
     $obj["status"] = "success";
     $obj["data"]["msg"] = "加入购物车成功！！！";

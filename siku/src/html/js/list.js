@@ -38,14 +38,14 @@ $(() => {
                     window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/content.html?" + s
                 })
                 $(".loveHeart").click(function(){//加入购物车
-                    let name = $(this).parent().children(".dl_name").text().trim();
+                    let msg = $(this).parent().children(".dl_name").text().trim();
                     let price = $(this).parent().children(".dl_price").text().trim().slice(1);
                     let src = $(this).parent().children("dt").children("img").attr("src");
                     event.stopPropagation();//阻止冒泡流
                     $.ajax({
                         type: "post",
                         url: "../server/addcart.php",
-                        data: `src=${src}&name=${name},&price=${price}`,
+                        data: `src=${src}&msg=${msg},&price=${price}`,
                         dataType: "json",
                         success: function (response) {
                             console.log(response);
