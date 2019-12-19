@@ -1,7 +1,7 @@
 $(() => {
     let user_id = window.localStorage.id;
-    getdata(user_id, 0, 0)
-    function getdata(user_id, type, good_id = 0,n=0) {
+    getdata(user_id)
+    function getdata(user_id, type=0, good_id = 0,n=0) {
         $.ajax({
             type: "post",
             url: "../server/getcartsj.php",

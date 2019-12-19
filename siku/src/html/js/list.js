@@ -55,6 +55,7 @@ $(() => {
                                 console.log(response);
                             }
                         });
+                        
                         $(".love_tips").addClass("cur");
                         setTimeout(() => {
                             $(".love_tips").removeClass("cur");
