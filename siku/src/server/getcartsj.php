@@ -33,7 +33,6 @@
   else if($type=="remove-batch"){
     $good_id = explode(",",$good_id);
     $num = count($good_id);//$msg是字符串 不是对象;
-    echo $good_id;
     for ($i=0; $i<$num; $i++) {
           $sql3 = "DELETE FROM `siku`.`cart` WHERE good_id =$good_id[$i] and id=$user_id";
           mysqli_query($db,$sql3);

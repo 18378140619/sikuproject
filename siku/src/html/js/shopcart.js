@@ -1,14 +1,4 @@
 $(() => {
-    // $.ajax({
-    //     type: "get",
-    //     url: "../server/getcartsj.php",
-    //     dataType: "json",
-    //     data: "data",
-    //     success: function (data) {
-    //         runderUI(data)
-    //         addmouceeven()
-    //     }
-    // });
     let user_id = window.localStorage.id;
     getdata(user_id, 0, 0)
     function getdata(user_id, type, good_id = 0,n=0) {
@@ -80,40 +70,19 @@ $(() => {
                 $(this).parents(".cart-item").removeClass("check-cart-item");
             }
         })
-        // 点击+按钮，文本框数字加一
-        $(".increment").click(function () {
+        $(".quantity-form a").click(function(){
             let tt = "add";
             let good_id = $(this).parents(".cart-item").children(".p-goods").attr("id")
             var n = $(this).siblings(".itxt").val();
-            n++;
-            console.log(user_id, tt,good_id,n);
-            
-            getdata(user_id, tt,good_id,n)
-            getSum();
-        })
-        // 点击-按钮，文本框数字减一
-        $(".decrement").click(function () {
-            let tt = "add";
-            let good_id = $(this).parents(".cart-item").children(".p-goods").attr("id")
-            var n = $(this).siblings(".itxt").val();
-            n <= 1 ? n : n--;
-            console.log(user_id, tt,good_id,n);
-            // $(this).siblings(".itxt").val(n);
+            if($(this).attr("class")=="decrement"){
+                n <= 1 ? n : n--;
+            }else if($(this).attr("class")=="increment"){
+                n++; 
+            }
             getdata(user_id, tt, good_id,n)
             getSum();
         })
-        // 当用户直接修改文本框时
-        $(".itxt").change(function () {
-            var n = $(this).val();
-            var num = $(this).parents(".p-num").siblings(".p-price").html().substr(1);
-            // toFixed(2)保留两位小数
-            var price = (num * n).toFixed(2);
-            $(this).parents(".p-num").siblings(".p-sum").html("￥" + price);
-            getSum();
-        })
         // 计算总额函数
-        getSum();
-
         function getSum() {
             var count = 0;
             var money = 0;
@@ -127,7 +96,6 @@ $(() => {
             })
             $(".price-sum em").text("￥" + money.toFixed(2));
         }
-
         // 删除商品模块
         // 删除单个商品
         $(".p-action a").click(function () {
@@ -136,31 +104,16 @@ $(() => {
             getdata(user_id,type,good_id)
             getSum();
         })
-        // 删除选中商品
-        $(".remove-batch").click(function () {
-            // console.log($(".j-checkbox:checked"));
-            let idarr = []
-            for (let index = 0; index < $(".j-checkbox:checked").length; index++) {
-                const element = $(".j-checkbox:checked").eq(index);
-                let i = element.parents(".cart-item").children(".p-goods").attr("id");
+        // 删除选中的商品或者清空购物车
+        $(".operation a").click(function(){
+            let idarr = [],b=$(".j-checkbox"),type="remove-batch"
+            if($(this).attr("class")=="remove-batch") b= $(".j-checkbox:checked");
+            for (let index = 0; index < b.length; index++) {
+                let i = b.eq(index).parents(".cart-item").children(".p-goods").attr("id");
                 idarr.push(i)
             }
-            let type="remove-batch";
             getdata(user_id,type,idarr);
-            getSum();
-        })
-        // 清理购物车
-        $(".clear-all").click(function () {
-            $(".j-checkbox").prop("checked", true);
-            let idarr = []
-            for (let index = 0; index < $(".j-checkbox:checked").length; index++) {
-                const element = $(".j-checkbox:checked").eq(index);
-                let i = element.parents(".cart-item").children(".p-goods").attr("id");
-                idarr.push(i)
-            }
-            let type="remove-batch";
-            getdata(user_id,type,idarr);
-            getSum();
+            getSum();         
         })
     }
 })
