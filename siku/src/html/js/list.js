@@ -30,32 +30,40 @@ $(() => {
                     $(this).toggleClass("bordertab");
                     $(this).children("span").toggleClass("cur");
                 });
-                $(".show_tips").click(function () {//跳转详情页
+                $(".show_tips").click(function () { //跳转详情页
                     let name = $(this).children(".dl_name").text().trim();
                     let price = $(this).children(".dl_price").text().trim().slice(1);
                     let src = $(this).children("dt").children("img").attr("src");
-                    var s = `name=${name},price=${price},src=${src} `
+                    let good_id= $(this).children("dt").attr("id");
+                    var s = `name=${name},price=${price},src=${src},good_id=${good_id}`
                     window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/content.html?" + s
                 })
-                $(".loveHeart").click(function(){//加入购物车
-                    let msg = $(this).parent().children(".dl_name").text().trim();
-                    let price = $(this).parent().children(".dl_price").text().trim().slice(1);
-                    let src = $(this).parent().children("dt").children("img").attr("src");
-                    let number=1;
-                    event.stopPropagation();//阻止冒泡流
-                    $.ajax({
-                        type: "post",
-                        url: "../server/addcart.php",
-                        data: `src=${src}&msg=${msg}&price=${price}&number=${number}`,
-                        dataType: "json",
-                        success: function (response) {
-                            console.log(response);
-                        }
-                    });
-                    $(".love_tips").addClass("cur");
-                    setTimeout(()=>{
-                        $(".love_tips").removeClass("cur");
-                    },2000)
+                $(".loveHeart").click(function () { //加入购物车
+                    event.stopPropagation(); //阻止冒泡流
+                    if (!window.localStorage.id) {
+                        window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/login.html";
+                    } else{
+                        let user_id = window.localStorage.id;
+                        let good_id = $(this).parent().children("dt").attr("id");
+                        let number = 1;
+                        $.ajax({
+                            type: "post",
+                            url: "../server/addcart.php",
+                            data: `user_id=${user_id}&good_id=${good_id}&number=${number}`,
+                            dataType: "json",
+                            success: function (response) {
+                                console.log(response);
+                            }
+                        });
+                        $(".love_tips").addClass("cur");
+                        setTimeout(() => {
+                            $(".love_tips").removeClass("cur");
+                        }, 2000)
+                        $(".winboxClose").click(() => {
+                            $(".love_tips").removeClass("cur");
+                        })
+                    }
+
                 })
             }
         });
@@ -65,7 +73,7 @@ $(() => {
         let html = data.map((ele) => {
             return ` <dl  class="">
         <div class="show_tips">
-            <dt id="propic_57251996" data="[{&quot;无&quot;:&quot;&quot;}]">
+            <dt id="${ele.id}" data="[{&quot;无&quot;:&quot;&quot;}]">
                 <img src=${ele.src} width="240" height="240" style="display: inline;">
             </dt>
             <dd class="dl_tips">

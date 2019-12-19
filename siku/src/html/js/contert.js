@@ -17,7 +17,7 @@ $(() => {
     $(".proName h2").text(data.name);
     $(".secooPriceJs").text(data.price);
     $(".move_box img").attr("src", data.src);
-
+    $("dd").attr("id",data["good_id"])
     //放大镜
     $("dt").hover(() => $(".zoomspan,.zoomdiv").toggleClass("cur"))
     $("dt").mousemove(function (e) {
@@ -60,25 +60,28 @@ $(() => {
         $("#buyNumVal").val(count)
     })
     $(".addshop").click(() => {
-        let msg = $(".proName h2").text().trim();
-        let price = $("#secooPriceJs").text();
-        let src = $(".jqzoom").attr("src");
-        let number = $("#buyNumVal").val();
-        $.ajax({
-            type: "post",
-            url: "../server/addcart.php",
-            data: `src=${src}&msg=${msg}&price=${price}&number=${number}`,
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-            }
-        });
-        $(".love_tips").addClass("cur");
-        setTimeout(()=>{
-            $(".love_tips").removeClass("cur");
-        },2000)
-        $(".winboxClose").click(()=>{
-            $(".love_tips").removeClass("cur");
-        })
+        if (!window.localStorage.id) {
+            window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/login.html";
+        } else {
+            let good_id = $("dd").attr("id");
+            let user_id = window.localStorage.id;
+            let number = $("#buyNumVal").val();
+            $.ajax({
+                type: "post",
+                url: "../server/addcart.php",
+                data: `good_id=${good_id}&user_id=${user_id}&number=${number}`,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+            $(".love_tips").addClass("cur");
+            setTimeout(() => {
+                $(".love_tips").removeClass("cur");
+            }, 2000)
+            $(".winboxClose").click(() => {
+                $(".love_tips").removeClass("cur");
+            })
+        }
     })
 })

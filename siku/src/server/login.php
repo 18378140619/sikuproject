@@ -27,8 +27,12 @@ if (mysqli_num_rows($result) == 0)
     echo json_encode($response, true);
   }else{
   # (3) 如果用户名和密码都匹配那么就 提示登录成功 => 跳转到首页
-    $response["status"] = "success";
+    $userId = $data["id"];
+    $response["status"] = "success";  
     $response["msg"] = "登录成功";
+    $response["userId"] = $userId;
+    $response["password"] = $password;
+    $response["username"] = $username;
     echo json_encode($response, true);
   }
 }

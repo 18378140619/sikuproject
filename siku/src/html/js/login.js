@@ -20,7 +20,10 @@ $(() => {
                 /* 登录成功 */
                 if (response.status == "success") {
                     /* 跳转到首页 */
-                    window.location.href = "http://www.secoo.com/";
+                    console.log(response);
+                    localStorage.username = usernameVal;
+                    localStorage.id = response.userId;
+                    window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/public/shouye.html";
                 } else {
                     /* 注册失败： */
                     alert(response.msg);

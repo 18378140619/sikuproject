@@ -13,14 +13,19 @@
   # (2) 如果该用户名在数据库不存在，那么就往数据库中插入一条数据，并且返回注册成功！
   
   # 获取客户端提交的参数
-  $src = $_REQUEST["src"];
-  $msg = $_REQUEST["msg"];
-  $price = $_REQUEST["price"];
+  $user_id = $_REQUEST["user_id"];
+  $good_id = $_REQUEST["good_id"];
   $number = $_REQUEST["number"];
   $obj = array("status"=>"", "data"=>array("msg"=>""));
   $db = mysqli_connect("127.0.0.1","root","","siku");
-  $sql = "INSERT INTO `cart` (`id`, `src`, `msg`,`price`,`number`) VALUES (null, '$src', '$msg',$price,$number)";
+  $sql = "SELECT * FROM cart WHERE good_id = $good_id AND id=$user_id"  ;
   $result = mysqli_query($db,$sql);
+  if(mysqli_num_rows($result) == 0){
+     $sql = "INSERT INTO `cart` (`cart_id`, `id`, `good_id`,`number`) VALUES (null, '$user_id', '$good_id',$number)";
+  }else{
+     $sql = "UPDATE `cart` SET `number`= `number`+ $number  WHERE `good_id`=$good_id AND id=$user_id";
+  }
+   $result = mysqli_query($db,$sql);
     $obj["status"] = "success";
     $obj["data"]["msg"] = "加入购物车成功！！！";
   echo json_encode($obj,true);

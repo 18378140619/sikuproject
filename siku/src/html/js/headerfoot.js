@@ -60,6 +60,21 @@ $(() => {
             })
         }
     }
+    // 用户登录后显示
+    if(window.localStorage.id){
+        $(".head-site").addClass("noshow")
+        $(".logoshow").addClass("cur")
+        $(".logoshow p").text("用户："+window.localStorage.username)
+    }else{
+        $(".head-site").removeClass("noshow")
+        $(".logoshow").removeClass("cur")
+    }
+    $(".zhuxiao").click(()=>{  
+        $(".head-site").removeClass("noshow")
+        $(".logoshow").removeClass("cur") 
+        window.localStorage.clear();
+        window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/public/shouye.html";
+    })
     $.ajax({
         type: "get",
         url: "../server/nav.php",

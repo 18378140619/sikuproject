@@ -9,18 +9,19 @@ $(() => {
     //         addmouceeven()
     //     }
     // });
-    getdata(0,0,0)
-    function getdata(msg, type,n=0) {
-       $.ajax({
-           type: "post",
-           url: "../server/getcartsj.php",
-           data: `msg=${msg}&type=${type}&n=${n}`,
-           dataType: "json",
-           success: function (data) {
+    let user_id = window.localStorage.id;
+    getdata(user_id, 0, 0)
+    function getdata(user_id, type, good_id = 0,n=0) {
+        $.ajax({
+            type: "post",
+            url: "../server/getcartsj.php",
+            data: `user_id=${user_id}&type=${type}&good_id=${good_id}&n=${n}`,
+            dataType: "json",
+            success: function (data) {
                 runderUI(data)
-                addmouceeven() 
-           }
-       });
+                addmouceeven()
+            }
+        });
     }
 
     function runderUI(data) {
@@ -29,11 +30,11 @@ $(() => {
            <div class="p-checkbox">
                <input type="checkbox" name="" id="" class="j-checkbox">
            </div>
-           <div  id="${ele.id}" class="p-goods">
+           <div id="${ele["good_id"]}" class="p-goods">
                <div class="p-img">
                    <img src=${ele.src} alt="">
                </div>
-               <p class="p-msg">${ele.msg}</p>
+               <p class="p-msg">${ele.name}</p>
            </div>
            <div class="p-price">￥${ele.price}</div>
            <div class="p-num">
@@ -81,21 +82,24 @@ $(() => {
         })
         // 点击+按钮，文本框数字加一
         $(".increment").click(function () {
-            let tt="add";
-            let msg = $(this).parents(".cart-item").children(".p-goods").attr("id")
+            let tt = "add";
+            let good_id = $(this).parents(".cart-item").children(".p-goods").attr("id")
             var n = $(this).siblings(".itxt").val();
             n++;
-            getdata(msg,tt,n)
+            console.log(user_id, tt,good_id,n);
+            
+            getdata(user_id, tt,good_id,n)
             getSum();
         })
         // 点击-按钮，文本框数字减一
         $(".decrement").click(function () {
-            let tt="add";
-            let msg = $(this).parents(".cart-item").children(".p-goods").attr("id")
+            let tt = "add";
+            let good_id = $(this).parents(".cart-item").children(".p-goods").attr("id")
             var n = $(this).siblings(".itxt").val();
             n <= 1 ? n : n--;
+            console.log(user_id, tt,good_id,n);
             // $(this).siblings(".itxt").val(n);
-            getdata(msg,tt,n)
+            getdata(user_id, tt, good_id,n)
             getSum();
         })
         // 当用户直接修改文本框时
@@ -109,6 +113,7 @@ $(() => {
         })
         // 计算总额函数
         getSum();
+
         function getSum() {
             var count = 0;
             var money = 0;
@@ -126,24 +131,35 @@ $(() => {
         // 删除商品模块
         // 删除单个商品
         $(".p-action a").click(function () {
-            let type="deleteone"
-            let msg = $(this).parents(".cart-item").children(".p-goods").attr("id")
-            getdata(msg, type)
+            let type = "deleteone"
+            let good_id = $(this).parents(".cart-item").children(".p-goods").attr("id")
+            getdata(user_id,type,good_id)
             getSum();
         })
         // 删除选中商品
         $(".remove-batch").click(function () {
             // console.log($(".j-checkbox:checked"));
-            let t=$(".j-checkbox:checked").length
-             let a= $(".j-checkbox:checked").eq(0).parents(".cart-item").children(".p-goods").attr("id");
-             for(let i=0,len<t;i<len;i++)
-             // let type="deleteone";
-            // getdata(msg, type);
+            let idarr = []
+            for (let index = 0; index < $(".j-checkbox:checked").length; index++) {
+                const element = $(".j-checkbox:checked").eq(index);
+                let i = element.parents(".cart-item").children(".p-goods").attr("id");
+                idarr.push(i)
+            }
+            let type="remove-batch";
+            getdata(user_id,type,idarr);
             getSum();
         })
         // 清理购物车
         $(".clear-all").click(function () {
-            $(".cart-item").remove();
+            $(".j-checkbox").prop("checked", true);
+            let idarr = []
+            for (let index = 0; index < $(".j-checkbox:checked").length; index++) {
+                const element = $(".j-checkbox:checked").eq(index);
+                let i = element.parents(".cart-item").children(".p-goods").attr("id");
+                idarr.push(i)
+            }
+            let type="remove-batch";
+            getdata(user_id,type,idarr);
             getSum();
         })
     }

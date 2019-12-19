@@ -82,7 +82,7 @@ $(() => {
             dataType: "json",
             success: function (data) {
                 if (data.status == "success") {
-                    window.location.href = "http://www.secoo.com/";
+                    window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/public/shouye.html";
                 } else {
                     alert(data.data.msg)
                 }
