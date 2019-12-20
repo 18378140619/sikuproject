@@ -233,3 +233,28 @@ img {
 .bordertab{
     border: 2px solid #ccc !important;
 }
+.cart-center{
+    width: 35px;
+    height: 40px;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    margin-top: -60px;
+    padding-top: 5px;
+}
+#gome-bar-border-tab li {
+    background: url(gmpro/1.0.0/public/1.0.0/css/i/uiline.png) no-repeat center bottom;
+}
+.gome-bar-btn-cart .icon-3{
+    padding-top: 10px;
+    font-size: 35px;
+    color: #09F;
+}
+.gome-bar-btn-cart span{
+    margin-bottom: 5px;
+    color: red;
+    position: absolute;
+    font-size: 12px;
+    top: 0;
+    left: 10px;
+}

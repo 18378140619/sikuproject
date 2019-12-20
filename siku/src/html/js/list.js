@@ -1,4 +1,18 @@
 $(() => {
+    // 获得该id购物车的商品总数
+    getcartcount(window.localStorage.id)
+    function getcartcount(user_id) {
+        $.ajax({
+            type: "post",
+            url: "../server/getcartcount.php",
+            data: `user_id=${user_id}`,
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                $(".gome-bar-btn-cart .bb").text(response.data.count)
+            }
+        });
+    }
     new Promise(function (resolve, reject) {
         $.ajax({
             type: "get",
@@ -34,15 +48,15 @@ $(() => {
                     let name = $(this).children(".dl_name").text().trim();
                     let price = $(this).children(".dl_price").text().trim().slice(1);
                     let src = $(this).children("dt").children("img").attr("src");
-                    let good_id= $(this).children("dt").attr("id");
+                    let good_id = $(this).children("dt").attr("id");
                     var s = `name=${name},price=${price},src=${src},good_id=${good_id}`
                     window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/content.html?" + s
                 })
-                $(".loveHeart").click(function () { //加入购物车
+                $(".loveHeart").click(function (event) { //加入购物车
                     event.stopPropagation(); //阻止冒泡流
                     if (!window.localStorage.id) {
                         window.location.href = "http://127.0.0.1/code/sikuproject/siku/src/html/login.html";
-                    } else{
+                    } else {
                         let user_id = window.localStorage.id;
                         let good_id = $(this).parent().children("dt").attr("id");
                         let number = 1;
@@ -52,10 +66,10 @@ $(() => {
                             data: `user_id=${user_id}&good_id=${good_id}&number=${number}`,
                             dataType: "json",
                             success: function (response) {
-                                console.log(response);
+                                getcartcount(user_id)
                             }
                         });
-                        
+
                         $(".love_tips").addClass("cur");
                         setTimeout(() => {
                             $(".love_tips").removeClass("cur");

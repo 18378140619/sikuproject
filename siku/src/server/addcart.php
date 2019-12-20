@@ -16,7 +16,7 @@
   $user_id = $_REQUEST["user_id"];
   $good_id = $_REQUEST["good_id"];
   $number = $_REQUEST["number"];
-  $obj = array("status"=>"", "data"=>array("msg"=>""));
+  $obj = array("status"=>"", "data"=>array("msg"=>"","count"=>""));
   $db = mysqli_connect("127.0.0.1","root","","siku");
   $sql = "SELECT * FROM cart WHERE good_id = $good_id AND id=$user_id"  ;
   $result = mysqli_query($db,$sql);
@@ -26,7 +26,12 @@
      $sql = "UPDATE `cart` SET `number`= `number`+ $number  WHERE `good_id`=$good_id AND id=$user_id";
   }
    $result = mysqli_query($db,$sql);
-    $obj["status"] = "success";
-    $obj["data"]["msg"] = "加入购物车成功！！！";
-  echo json_encode($obj,true);
+   //拿总数量
+   $sql="SELECT sum(number) FROM cart WHERE id=$user_id";
+   $result = mysqli_query($db,$sql);
+   $data = mysqli_fetch_all($result,MYSQLI_ASSOC);
+   $obj["status"] = "success";
+   $obj["data"]["msg"] = "加入购物车成功！！！";
+   $obj["data"]["count"] = $data[0]["sum(number)"];
+   echo json_encode($obj,true);
 ?>

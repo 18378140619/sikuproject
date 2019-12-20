@@ -1,6 +1,6 @@
 $(() => {
     let user_id = window.localStorage.id;
-    getdata(user_id)
+    getdata(user_id)//拿该用户数据库所有的数据
     function getdata(user_id, type=0, good_id = 0,n=0) {
         $.ajax({
             type: "post",
@@ -13,7 +13,6 @@ $(() => {
             }
         });
     }
-
     function runderUI(data) {
         let html = data.map((ele) => {
             return ` <div class="cart-item">
@@ -115,5 +114,11 @@ $(() => {
             getdata(user_id,type,idarr);
             getSum();         
         })
+        // 判断购物车为空
+        if($(".j-checkbox").length==0){
+            $(".cart-empty").addClass("cur")
+        }else{
+            $(".cart-empty").removeClass("cur")
+        }
     }
 })
